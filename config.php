@@ -17,7 +17,7 @@
 
 
 
-    $db['testdb'] = array('localhost', 'root', '', 'sample_db');
+    $db['testdb'] = array('localhost', 'root', '', 'basic_sample_db');
 
 
     include APICLUDE . 'class.common.php';

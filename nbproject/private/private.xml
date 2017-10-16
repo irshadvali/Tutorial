@@ -5,6 +5,7 @@
         <group>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/Tutorial/apis/index.php</file>
             <file>file:/Applications/XAMPP/xamppfiles/htdocs/Tutorial/index.php</file>
+            <file>file:/Applications/XAMPP/xamppfiles/htdocs/Tutorial/apis/include/class.user.php</file>
         </group>
     </open-files>
 </project-private>

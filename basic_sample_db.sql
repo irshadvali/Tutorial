@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 16, 2017 at 06:50 AM
+-- Generation Time: Oct 23, 2017 at 06:50 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -65,6 +65,36 @@ INSERT INTO `companyMap` (`companyid`, `UserId`) VALUES
 (1, 5),
 (1, 3),
 (2, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `projectMap`
+--
+
+CREATE TABLE `projectMap` (
+  `projectid` int(8) NOT NULL,
+  `projectname` varchar(64) NOT NULL,
+  `assignuser` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `projectMap`
+--
+
+INSERT INTO `projectMap` (`projectid`, `projectname`, `assignuser`) VALUES
+(1, 'AC project', 1),
+(2, 'PL project', 2),
+(3, 'NAM Project', 1),
+(4, 'POR Project', 2),
+(5, 'BPP Project', 3),
+(6, 'ABD Project', 3),
+(7, 'AGT Project', 4),
+(8, 'AAA Project', 5),
+(9, 'SSS Project', 5),
+(10, 'AKL Project', 1),
+(11, 'LKJH Pr Project', 2),
+(12, 'AERT Project', 3);
 
 -- --------------------------------------------------------
 

@@ -289,6 +289,47 @@ class Users extends DB {
         $result = array('results' => $arr, 'error' => $err);
         return $result;
     }
+    
+    
+        
+        public function companyDetailsWithEmailAndProject() {
+//        $actflag = (!empty($params['activeflag'])) ? trim($params['activeflag']) : '';
+
+        $vsql = "SELECT * fROM companydetails";
+
+        $vres = $this->query($vsql);
+        $cnt1 = $this->numRows($vres);
+        if ($cnt1 > 0) {
+            while ($row = $this->fetchData($vres)) {
+                $cid = $row['id'];
+                $det = "SELECT * FROM user_details,tbl_user_master WHERE user_details.id = tbl_user_master.id AND tbl_user_master.id in (SELECT Userid from companyMap WHERE companyid=$cid)";
+                $vresone = $this->query($det);
+                $cnt2 = $this->numRows($vresone);
+                if ($cnt2 > 0) {
+
+
+                    while ($row1 = $this->fetchData($vresone)) {
+                         $projectSql = "SELECT * fROM projectMap where assignuser=".$row1['id'];
+                          $pres = $this->query($projectSql);
+                          while ($prow = $this->fetchData($pres)){
+                            $row1['prject'][]=  $prow;
+                          }
+                        
+                        $row['users'][] = $row1;
+                    }
+                }
+
+                $arr[] = $row;
+            }
+            $err = array('errCode' => 0, 'errMsg' => 'data found successfully');
+        } else {
+            $arr = array();
+            $err = array('errCode' => 1, 'errMsg' => 'no data found');
+        }
+
+        $result = array('results' => $arr, 'error' => $err);
+        return $result;
+    }
 
 }
 

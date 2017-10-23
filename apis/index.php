@@ -73,6 +73,13 @@ switch ($action) {
         $result = $obj->companyDetailsWithEmail();
         $res = $result;
         break;
+    
+        case 'companyDetailsWithEmailAndProject':
+        include APICLUDE . 'class.user.php';
+        $obj = new Users($db['testdb']);
+        $result = $obj->companyDetailsWithEmailAndProject();
+        $res = $result;
+        break;
     default:
         $resp = array();
         $error = array('errCode' => 1, 'errMsg' => 'specified action not found');
@@ -83,3 +90,8 @@ unset($obj);
 echo json_encode($result);
 exit;
 ?>
+
+
+
+
+

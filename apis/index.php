@@ -80,6 +80,12 @@ switch ($action) {
         $result = $obj->companyDetailsWithEmailAndProject();
         $res = $result;
         break;
+        case 'deleteUser':
+        include APICLUDE . 'class.user.php';
+        $obj = new Users($db['testdb']);
+        $result = $obj->deleteUser($params);
+        $res = $result;
+        break;
     default:
         $resp = array();
         $error = array('errCode' => 1, 'errMsg' => 'specified action not found');

@@ -255,9 +255,8 @@ class Users extends DB {
         $result = array('results' => $arr, 'error' => $err);
         return $result;
     }
-    
-    
-        public function companyDetailsWithEmail() {
+
+    public function companyDetailsWithEmail() {
 //        $actflag = (!empty($params['activeflag'])) ? trim($params['activeflag']) : '';
 
         $vsql = "SELECT * fROM companydetails";
@@ -289,10 +288,8 @@ class Users extends DB {
         $result = array('results' => $arr, 'error' => $err);
         return $result;
     }
-    
-    
-        
-        public function companyDetailsWithEmailAndProject() {
+
+    public function companyDetailsWithEmailAndProject() {
 //        $actflag = (!empty($params['activeflag'])) ? trim($params['activeflag']) : '';
 
         $vsql = "SELECT * fROM companydetails";
@@ -309,12 +306,12 @@ class Users extends DB {
 
 
                     while ($row1 = $this->fetchData($vresone)) {
-                         $projectSql = "SELECT * fROM projectMap where assignuser=".$row1['id'];
-                          $pres = $this->query($projectSql);
-                          while ($prow = $this->fetchData($pres)){
-                            $row1['prject'][]=  $prow;
-                          }
-                        
+                        $projectSql = "SELECT * fROM projectMap where assignuser=" . $row1['id'];
+                        $pres = $this->query($projectSql);
+                        while ($prow = $this->fetchData($pres)) {
+                            $row1['prject'][] = $prow;
+                        }
+
                         $row['users'][] = $row1;
                     }
                 }
@@ -325,6 +322,28 @@ class Users extends DB {
         } else {
             $arr = array();
             $err = array('errCode' => 1, 'errMsg' => 'no data found');
+        }
+
+        $result = array('results' => $arr, 'error' => $err);
+        return $result;
+    }
+
+    public function deleteUser($params) {
+        $deleteUserid = (!empty($params['deleteUserid'])) ? trim($params['deleteUserid']) : '';
+//          DELETE FROM `tbl_user_master` WHERE `tbl_user_master`.`id` = 66"
+        $vsql = "DELETE  FROM tbl_user_master WHERE id=\"" . $deleteUserid . "\"";
+        $vres = $this->query($vsql);
+
+//        $row = $this->fetchData($vres);
+//        $cnt1 = $this->numRows($vres);
+
+
+        if ($vres) {
+            $arr = array();
+            $err = array('errCode' => 0, 'errMsg' => 'data deleted successfully');
+        } else {
+            $arr = array();
+            $err = array('errCode' => 1, 'errMsg' => 'data did not deleted');
         }
 
         $result = array('results' => $arr, 'error' => $err);

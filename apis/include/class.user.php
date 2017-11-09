@@ -334,10 +334,6 @@ class Users extends DB {
         $vsql = "DELETE  FROM tbl_user_master WHERE id=\"" . $deleteUserid . "\"";
         $vres = $this->query($vsql);
 
-//        $row = $this->fetchData($vres);
-//        $cnt1 = $this->numRows($vres);
-
-
         if ($vres) {
             $arr = array();
             $err = array('errCode' => 0, 'errMsg' => 'data deleted successfully');
